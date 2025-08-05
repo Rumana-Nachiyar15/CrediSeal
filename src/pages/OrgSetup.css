@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@700&display=swap');
+
+.org-setup-container {
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  font-family: 'Poppins', sans-serif;
+  color: #f1faee;
+  transition: filter 0.3s ease;
+}
+
+.org-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+/* Heading */
+.org-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Form */
+.org-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 450px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.org-form input {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  background-color: #f1faee;
+  color: #1d3557;
+  transition: transform 0.3s;
+}
+
+.org-form input:focus {
+  outline: none;
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.4);
+}
+
+.submit-button {
+  background-color: #a8dadc;
+  color: #1d3557;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #f1faee;
+  transform: scale(1.05);
+}
+.blurred-background {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(29, 53, 87, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Popup Card */
+.popup-card {
+  background: #f1faee;
+  color: #1d3557;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeInUp 0.6s ease;
+  text-align: center;
+  z-index: 1000;
+}
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #1d3557;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.popup-close:hover {
+  transform: scale(1.2);
+}
+
+/* Link Box */
+.popup-link-box {
+  margin-top: 15px;
+  background-color: #e0f3f5;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-break: break-word;
+}
+
+/* Copy Icon */
+.copy-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #1d3557;
+  transition: transform 0.2s;
+}
+
+.copy-btn:hover {
+  transform: scale(1.2);
+}
+
+.copied-msg {
+  margin-top: 10px;
+  color: green;
+  font-size: 0.95rem;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: #f1faee;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.back-arrow:hover {
+  transform: translateX(-5px) scale(1.1);
+}
+
+.text-logo {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #f1faee;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
