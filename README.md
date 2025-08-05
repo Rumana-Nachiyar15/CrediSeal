@@ -37,11 +37,4 @@ A cloud-based web application that automates the generation, distribution, and v
 4. Metadata is saved to DynamoDB.
 5. Verification via ID is handled through the `/verify` endpoint.
 
-## 📧 Contact
 
-For support or queries:  
-📩 **leap_info@respark.iitm.ac.in**
-
----
-
-© 2025 | LEAP | All rights reserved
