@@ -5,17 +5,28 @@ import './Verify.css';
 export default function Verify() {
   const [certId, setCertId] = useState('');
   const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleVerify = async (e) => {
     e.preventDefault();
+    setError(null);
+    setResult(null);
+
+    if (!certId.trim()) {
+      setError('Please enter a Certificate ID');
+      return;
+    }
+
     try {
-      const res = await fetch(`http://localhost:5000/verify/${certId}`);
+      const res = await fetch(`http://localhost:5000/api/verify/${certId}`);
+      if (!res.ok) {
+        throw new Error('Certificate not found');
+      }
       const data = await res.json();
       setResult(data);
     } catch (err) {
-      console.error('Verification error:', err);
-      setResult({ valid: false, message: 'Network error' });
+      setError(err.message || 'Verification failed');
     }
   };
 
@@ -37,29 +48,36 @@ export default function Verify() {
           <button type="submit">Verify</button>
         </form>
 
-        {result && (
+        {error && <div className="error-msg">❌ {error}</div>}
+
+        {result && result.valid && (
           <div className="verify-result">
-            {result.valid ? (
-              <div className="certificate-card">
-                <h3>✅ Certificate is Valid</h3>
-                <p><strong>Name:</strong> {result.name}</p>
-                <p><strong>Course:</strong> {result.course}</p>
-                <p><strong>Date:</strong> {result.date}</p>
-                <p><strong>Email:</strong> {result.email}</p>
-                {result.pdf_url && (
-                  <p>
-                    <a href={result.pdf_url} target="_blank" rel="noopener noreferrer">
-                      📄 View Certificate
-                    </a>
-                  </p>
-                )}
+            <div className="certificate-card">
+              <h3>✅ Certificate is Valid</h3>
+              <p><strong>Course:</strong> {result.course}</p>
+              <p><strong>Date:</strong> {result.date}</p>
+              {/* Embedded PDF in small box */}
+              <div className="pdf-viewer-container">
+                <iframe
+                  src={result.pdf_url}
+                  title="Certificate PDF"
+                  width="400px"
+                  height="300px"
+                  style={{ border: '1px solid #ccc', borderRadius: '8px' }}
+                />
               </div>
-            ) : (
-              <div className="error-msg">❌ {result.message || 'Invalid Certificate ID'}</div>
-            )}
+              <a href={result.pdf_url} download className="download-link">
+                📄 Download Certificate
+              </a>
+            </div>
           </div>
+        )}
+
+        {result && !result.valid && (
+          <div className="error-msg">❌ {result.message || 'Invalid Certificate ID'}</div>
         )}
       </div>
     </div>
   );
 }
+
