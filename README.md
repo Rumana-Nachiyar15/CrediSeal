@@ -37,9 +37,10 @@ A cloud-based web application that automates the generation, distribution, and v
 4. Metadata is saved to DynamoDB.
 5. Verification via ID is handled through the `/verify` endpoint.
 
-Authors 
-Rumana Nachiyar M 
-Sushma C @Sushma-810
-Sri Janani A @jan-17-07
+## Authors
+- Rumana Nachiyar M (@Rumana-Nachiyar15)
+- Sushma C (@Sushma-810)
+- Sri Janani A (@jan-17-07)
+
 
 
